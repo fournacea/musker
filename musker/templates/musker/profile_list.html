@@ -1,0 +1,13 @@
+{% extends 'musker/base.html' %}
+
+{% block content %} 
+    <h1>Profile List: </h1>
+    {% if profiles %}
+        {% for profile in profiles %}
+            <p>Username: {{ profile.user.username }} </p>
+            <p>Link: @{{ profile.user.username|lower }} </p>
+            <p>Last Updated: {{ profile.date_modified }} </p>
+            <br>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}

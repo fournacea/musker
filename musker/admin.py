@@ -40,7 +40,7 @@ from .models import Profile
 admin.site.unregister(User)
 
 # Define Profile as an inline model
-class ProfileInline(admin.TabularInline):
+class ProfileInline(admin.StackedInline):
     model = Profile
 
 # Extend the UserAdmin class and add the ProfileInline
@@ -52,11 +52,12 @@ class CustomUserAdmin(UserAdmin):
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     inlines = [ProfileInline]
+   
 
 # Replace the UserAdmin model with CustomUserAdmin
 
 admin.site.register(User, CustomUserAdmin)
 
 # Register the Profile model separately
-admin.site.register(Profile)
+#admin.site.register(Profile)
 
